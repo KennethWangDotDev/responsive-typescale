@@ -75,37 +75,38 @@ font-size: 4.121rem;
 
 Creates a `responsive-typescale` instance that uses the passed breakpoints. Returns an object with the following functions:
 
-* [size](#sizescalelevel)
-* [padding](#paddingdirection-rhythmamount)
-* [margin](#margindirection-rhythmamount)
-* [media](#mediabreakpointnamecss)
+* [size](#initresponsivetypescalesizescalelevel)
+* [padding](#initresponsivetypescalepaddingdirection-rhythmamount)
+* [margin](#initresponsivetypescalemargindirection-rhythmamount)
+* [media](#initresponsivetypescalemediabreakpointname-css)
 
 #### breakpoints
 
-Type: `object`. (TS: [`Breakpoints`](src/lib/breakpoints.ts#L7))
+Type: `object` - (TS: [`Breakpoints`](src/lib/breakpoints.ts#L7))
+
 Default: [`sensibleDefaultBreakpoints`](src/lib/breakpoints.ts#L12)
 
-An object containing each [`Breakpoint`](src/lib/breakpoints.ts#L1). A `Breakpoint` contains a `width` key indicating when it activates, and its associated modular scale. The names of the breakpoints are used in the [media](#mediabreakpointnamecss) function.
+An object containing each [`Breakpoint`](src/lib/breakpoints.ts#L1). A `Breakpoint` contains a `width` key indicating when it activates, and its associated modular scale. The names of the breakpoints are used in the [media](#initresponsivetypescalemediabreakpointname-css) function.
 
 Note: It is required to have a Breakpoint with the key `default`. The `default` breakpoint does not need to have a `width` key.
 
-### size(scaleLevel)
+### initResponsiveTypescale().size(scaleLevel)
 
 Returns a `string` with proper CSS that sets the `font-size` to the passed modular scale level. Uses the passed breakpoint from `initResponsiveTypescale`, and the returned string contains the proper media queries for each breakpoint.
 
 #### scaleLevel
 
-Type: `number | string`. (TS: [`ScaleLevel`](src/lib/typescale.ts#L4))
+Type: `number | string` - (TS: [`ScaleLevel`](src/lib/typescale.ts#L4))
 
 Modular scale level, from `0` to `7`. Altneratively, semantic aliases `p`, `h6` to `h1`, and `hero` can be used, too.
 
-### padding(direction, rhythmAmount)
+### initResponsiveTypescale().padding(direction, rhythmAmount)
 
 Returns a `string` with proper CSS that sets `padding` in the specified direction by the specified rhythm amount.  Uses the passed breakpoint from `initResponsiveTypescale`, and the returned string contains the proper media queries for each breakpoint.
 
 #### direction
 
-Type: `string`. (TS: [`Direction`](src/lib/spacing.ts#L4))
+Type: `string` - (TS: [`Direction`](src/lib/spacing.ts#L4))
 
 Direction to apply the padding: `top`, `bottom`, `left`, or `right`.
 
@@ -115,11 +116,11 @@ Type: `number`
 
 A rhythm is a unit that is defined by the line-height of the body text. (Body text refers to the modular scale level of 0).
 
-### margin(direction, rhythmAmount)
+### initResponsiveTypescale().margin(direction, rhythmAmount)
 
-Same as the [`padding`](#padding) function, except it sets the `margin` CSS property.
+Same as the [`padding`](#initresponsivetypescalepaddingdirection-rhythmamount) function, except it sets the `margin` CSS property.
 
-### media[breakpointName] (css)
+### initResponsiveTypescale().media[breakpointName] (css)
 
 Helper function to generate CSS strings that target the specified breakpoint.
 

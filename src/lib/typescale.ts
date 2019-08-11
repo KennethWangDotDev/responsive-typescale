@@ -1,10 +1,10 @@
 import modularScale from 'modular-scale';
 import { Breakpoints } from './breakpoints';
 
-type SizeTypes = 'p' | 'h6' | 'h5' | 'h4' | 'h3' | 'h2' | 'h1' | 'hero' | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7;
+type ScaleLevel = 'p' | 'h6' | 'h5' | 'h4' | 'h3' | 'h2' | 'h1' | 'hero' | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7;
 
 type TypeScale = {
-    [type in SizeTypes]: number;
+    [type in ScaleLevel]: number;
 };
 
 interface TypeScaleBreakpoints {
@@ -42,4 +42,4 @@ const generateTypescale = (breakpoints: Breakpoints): TypeScaleBreakpoints => {
     return typeScale;
 };
 
-export { TypeScaleBreakpoints, SizeTypes, generateTypescale };
+export { TypeScaleBreakpoints, ScaleLevel, generateTypescale };

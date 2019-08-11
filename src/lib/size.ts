@@ -1,14 +1,14 @@
 import { MediaBreakpoints } from './media';
-import { SizeTypes, TypeScaleBreakpoints } from './typescale';
+import { ScaleLevel, TypeScaleBreakpoints } from './typescale';
 
 const sizeFunction = (
-    sizeType: SizeTypes,
+    scaleLevel: ScaleLevel,
     typescaleBreakpoints: TypeScaleBreakpoints,
     mediaBreakpoints: MediaBreakpoints
 ): string => {
     let sizeCss = '';
     Object.entries(typescaleBreakpoints).forEach(([breakpointKey, typescale]) => {
-        const rule = `${`font-size: ${typescale[sizeType]}rem;`}\n`;
+        const rule = `${`font-size: ${typescale[scaleLevel]}rem;`}\n`;
         if (breakpointKey === 'default') {
             sizeCss += rule;
         } else {
@@ -19,7 +19,7 @@ const sizeFunction = (
 };
 
 const generateSizeMixin = (typescaleBreakpoints: TypeScaleBreakpoints, mediaBreakpoints: MediaBreakpoints) => {
-    return (sizeType: SizeTypes) => sizeFunction(sizeType, typescaleBreakpoints, mediaBreakpoints);
+    return (scaleLevel: ScaleLevel) => sizeFunction(scaleLevel, typescaleBreakpoints, mediaBreakpoints);
 };
 
 export { generateSizeMixin };

@@ -4,7 +4,7 @@ import { generateTypescale } from './lib/typescale';
 import { generateSizeMixin } from './lib/size';
 import { generateSpacingMixins } from './lib/spacing';
 
-const responsiveTypescaleLib = (breakpoints = sensibleDefaultBreakpoints) => {
+const initResponsiveTypescale = (breakpoints = sensibleDefaultBreakpoints) => {
     const media = generateMediaBreakpoints(breakpoints);
     const typescale = generateTypescale(breakpoints);
     const size = generateSizeMixin(typescale, media);
@@ -17,4 +17,4 @@ const responsiveTypescaleLib = (breakpoints = sensibleDefaultBreakpoints) => {
     };
 };
 
-export default responsiveTypescaleLib;
+export default initResponsiveTypescale;

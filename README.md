@@ -75,17 +75,17 @@ font-size: 4.121rem;
 
 Creates a `responsive-typescale` instance that uses the passed breakpoints. Returns an object with the following functions:
 
-* [size](#size)
-* [padding](#padding)
-* [margin](#margin)
-* [media](#media)
+* [size](#sizescalelevel)
+* [padding](#paddingdirection-rhythmamount)
+* [margin](#margindirection-rhythmamount)
+* [media](#mediabreakpointnamecss)
 
 #### breakpoints
 
 Type: `object`. (TS: [`Breakpoints`](src/lib/breakpoints.ts#L7))
 Default: [`sensibleDefaultBreakpoints`](src/lib/breakpoints.ts#L12)
 
-An object containing each [`Breakpoint`](src/lib/breakpoints.ts#L1). A `Breakpoint` contains a `width` key indicating when it activates, and its associated modular scale. The names of the breakpoints are used in the [media](#media) function.
+An object containing each [`Breakpoint`](src/lib/breakpoints.ts#L1). A `Breakpoint` contains a `width` key indicating when it activates, and its associated modular scale. The names of the breakpoints are used in the [media](#mediabreakpointnamecss) function.
 
 Note: It is required to have a Breakpoint with the key `default`. The `default` breakpoint does not need to have a `width` key.
 
@@ -117,9 +117,9 @@ A rhythm is a unit that is defined by the line-height of the body text. (Body te
 
 ### margin(direction, rhythmAmount)
 
-Same as [`padding`](#padding), except it sets the `margin` CSS property.
+Same as the [`padding`](#padding) function, except it sets the `margin` CSS property.
 
-### media[breakpointName](css)
+### media[breakpointName] (css)
 
 Helper function to generate CSS strings that target the specified breakpoint.
 

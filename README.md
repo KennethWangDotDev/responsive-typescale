@@ -114,7 +114,7 @@ Direction to apply the padding: `top`, `bottom`, `left`, or `right`.
 
 Type: `number`
 
-A rhythm is a unit that is defined by the line-height of the body text. (Body text refers to the modular scale level of 0).
+A single rhythm unit is equal to the line-height of the body text. (Body text refers to the modular scale level of 0).
 
 ### initResponsiveTypescale().margin(direction, rhythmUnits)
 

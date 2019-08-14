@@ -76,8 +76,8 @@ font-size: 4.121rem;
 Creates a `responsive-typescale` instance that uses the passed breakpoints. Returns an object with the following functions:
 
 * [size](#initresponsivetypescalesizescalelevel)
-* [padding](#initresponsivetypescalepaddingdirection-rhythmamount)
-* [margin](#initresponsivetypescalemargindirection-rhythmamount)
+* [padding](#initresponsivetypescalepaddingdirection-rhythmunits)
+* [margin](#initresponsivetypescalemargindirection-rhythmunits)
 * [media](#initresponsivetypescalemediabreakpointname-css)
 
 #### breakpoints
@@ -100,7 +100,7 @@ Type: `number | string` - (TS: [`ScaleLevel`](src/lib/typescale.ts#L4))
 
 Modular scale level, from `0` to `7`. Altneratively, semantic aliases `p`, `h6` to `h1`, and `hero` can be used, too.
 
-### initResponsiveTypescale().padding(direction, rhythmAmount)
+### initResponsiveTypescale().padding(direction, rhythmUnits)
 
 Returns a `string` with proper CSS that sets `padding` in the specified direction by the specified rhythm amount.  Uses the passed breakpoint from `initResponsiveTypescale`, and the returned string contains the proper media queries for each breakpoint.
 
@@ -110,15 +110,15 @@ Type: `string` - (TS: [`Direction`](src/lib/spacing.ts#L4))
 
 Direction to apply the padding: `top`, `bottom`, `left`, or `right`.
 
-#### rhythmAmount
+#### rhythmUnits
 
 Type: `number`
 
 A rhythm is a unit that is defined by the line-height of the body text. (Body text refers to the modular scale level of 0).
 
-### initResponsiveTypescale().margin(direction, rhythmAmount)
+### initResponsiveTypescale().margin(direction, rhythmUnits)
 
-Same as the [`padding`](#initresponsivetypescalepaddingdirection-rhythmamount) function, except it sets the `margin` CSS property.
+Same as the [`padding`](#initresponsivetypescalepaddingdirection-rhythmunits) function, except it sets the `margin` CSS property.
 
 ### initResponsiveTypescale().media[breakpointName] (css)
 
@@ -161,7 +161,7 @@ import initResponsiveTypescale from 'responsive-typescale';
 
 const responsiveTypescale = initResponsiveTypescale();
 
-export default responsiveTypescale;
+export const { size, margin, media, padding } = typescale;
 ```
 
 `anotherFile.js`

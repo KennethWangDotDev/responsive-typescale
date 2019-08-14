@@ -13,7 +13,7 @@ $ npm install responsive-typescale
 ## Usage
 
 ```js
-import initResponsiveTypescale from 'responsive-typescale';
+import initTypescale from 'responsive-typescale';
 
 const breakpoints = {
     default: {
@@ -47,8 +47,8 @@ const breakpoints = {
     }
 };
 
-const responsiveTypescale = initResponsiveTypescale(breakpoints);
-responsiveTypescale.size(7);
+const typescale = initTypescale(breakpoints);
+typescale.size(7);
 ```
 
 String output:
@@ -71,14 +71,14 @@ font-size: 4.121rem;
 
 ## API
 
-### initResponsiveTypescale(breakpoints?)
+### initTypescale(breakpoints?)
 
 Creates a `responsive-typescale` instance that uses the passed breakpoints. Returns an object with the following functions:
 
-* [size](#initresponsivetypescalesizescalelevel)
-* [padding](#initresponsivetypescalepaddingdirection-rhythmunits)
-* [margin](#initresponsivetypescalemargindirection-rhythmunits)
-* [media](#initresponsivetypescalemediabreakpointname-css)
+* [size](#inittypescalesizescalelevel)
+* [padding](#inittypescalepaddingdirection-rhythmunits)
+* [margin](#inittypescalemargindirection-rhythmunits)
+* [media](#inittypescalemediabreakpointname-css)
 
 #### breakpoints
 
@@ -86,13 +86,13 @@ Type: `object` - (TS: [`Breakpoints`](src/lib/breakpoints.ts#L7))
 
 Default: [`sensibleDefaultBreakpoints`](src/lib/breakpoints.ts#L12)
 
-An object containing each [`Breakpoint`](src/lib/breakpoints.ts#L1). A `Breakpoint` contains a `width` key indicating when it activates, and its associated modular scale. The names of the breakpoints are used in the [media](#initresponsivetypescalemediabreakpointname-css) function.
+An object containing each [`Breakpoint`](src/lib/breakpoints.ts#L1). A `Breakpoint` contains a `width` key indicating when it activates, and its associated modular scale. The names of the breakpoints are used in the [media](#inittypescalemediabreakpointname-css) function.
 
 Note: It is required to have a Breakpoint with the key `default`. The `default` breakpoint does not need to have a `width` key.
 
-### initResponsiveTypescale().size(scaleLevel)
+### initTypescale().size(scaleLevel)
 
-Returns a `string` with proper CSS that sets the `font-size` to the passed modular scale level. Uses the passed breakpoint from `initResponsiveTypescale`, and the returned string contains the proper media queries for each breakpoint.
+Returns a `string` with proper CSS that sets the `font-size` to the passed modular scale level. Uses the passed breakpoint from `initTypescale`, and the returned string contains the proper media queries for each breakpoint.
 
 #### scaleLevel
 
@@ -100,9 +100,9 @@ Type: `number | string` - (TS: [`ScaleLevel`](src/lib/typescale.ts#L4))
 
 Modular scale level, from `0` to `7`. Altneratively, semantic aliases `p`, `h6` to `h1`, and `hero` can be used, too.
 
-### initResponsiveTypescale().padding(direction, rhythmUnits)
+### initTypescale().padding(direction, rhythmUnits)
 
-Returns a `string` with proper CSS that sets `padding` in the specified direction by the specified rhythm amount.  Uses the passed breakpoint from `initResponsiveTypescale`, and the returned string contains the proper media queries for each breakpoint.
+Returns a `string` with proper CSS that sets `padding` in the specified direction by the specified rhythm amount.  Uses the passed breakpoint from `initTypescale`, and the returned string contains the proper media queries for each breakpoint.
 
 #### direction
 
@@ -116,11 +116,11 @@ Type: `number`
 
 A single rhythm unit is equal to the line-height of the body text. (Body text refers to the modular scale level of 0).
 
-### initResponsiveTypescale().margin(direction, rhythmUnits)
+### initTypescale().margin(direction, rhythmUnits)
 
-Same as the [`padding`](#initresponsivetypescalepaddingdirection-rhythmunits) function, except it sets the `margin` CSS property.
+Same as the [`padding`](#inittypescalepaddingdirection-rhythmunits) function, except it sets the `margin` CSS property.
 
-### initResponsiveTypescale().media[breakpointName] (css)
+### initTypescale().media[breakpointName] (css)
 
 Helper function to generate CSS strings that target the specified breakpoint.
 
@@ -152,14 +152,14 @@ String output:
 
 ### Exporting the `responsive-typescale` Instance
 
-It's a good idea to initialize the library using initResponsiveTypescale, and then export the instance.
+It's a good idea to initialize the library using initTypescale, and then export the instance.
 
 `typescale.js`
 
 ```js
-import initResponsiveTypescale from 'responsive-typescale';
+import initTypescale from 'responsive-typescale';
 
-const responsiveTypescale = initResponsiveTypescale();
+const typescale = initTypescale();
 
 export const { size, margin, media, padding } = typescale;
 ```

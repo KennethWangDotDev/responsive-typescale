@@ -1,14 +1,26 @@
 import { MediaBreakpoints } from './media';
-import { ScaleLevel, TypeScaleBreakpoints } from './typescale';
+import { TypeScaleBreakpoints } from './typescale';
+import { Breakpoints } from './breakpoints';
 
 const sizeFunction = (
-    scaleLevel: ScaleLevel,
+    scaleLevel: number,
+    rhythmUnits: number,
+    breakpoints: Breakpoints,
     typescaleBreakpoints: TypeScaleBreakpoints,
     mediaBreakpoints: MediaBreakpoints
 ): string => {
     let sizeCss = '';
     Object.entries(typescaleBreakpoints).forEach(([breakpointKey, typescale]) => {
-        const rule = `${`font-size: ${typescale[scaleLevel]}rem;`}\n`;
+        // Generate CSS Rule
+        let rule = `${`font-size: ${typescale(scaleLevel)}rem;`}\n`;
+        if (rhythmUnits > 0) {
+            rule += `line-height: ${(
+                breakpoints[breakpointKey].lineHeight *
+                breakpoints[breakpointKey].base *
+                rhythmUnits
+            ).toFixed(4)}rem;\n`;
+        }
+        // Generate responsive CSS
         if (breakpointKey === 'default') {
             sizeCss += rule;
         } else {
@@ -18,8 +30,13 @@ const sizeFunction = (
     return sizeCss;
 };
 
-const generateSizeMixin = (typescaleBreakpoints: TypeScaleBreakpoints, mediaBreakpoints: MediaBreakpoints) => {
-    return (scaleLevel: ScaleLevel) => sizeFunction(scaleLevel, typescaleBreakpoints, mediaBreakpoints);
+const generateSizeMixin = (
+    breakpoints: Breakpoints,
+    typescaleBreakpoints: TypeScaleBreakpoints,
+    mediaBreakpoints: MediaBreakpoints
+) => {
+    return (scaleLevel: number, rhythmUnits: number = 0) =>
+        sizeFunction(scaleLevel, rhythmUnits, breakpoints, typescaleBreakpoints, mediaBreakpoints);
 };
 
 export { generateSizeMixin };

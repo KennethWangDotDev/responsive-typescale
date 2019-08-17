@@ -1,14 +1,12 @@
 import test from 'ava';
 import dedent from 'dedent';
 import { testBreakpoint } from './test-breakpoint';
-import { generateTypescale } from '../lib/typescale';
 import { generateMediaBreakpoints } from '../lib/media';
 import { generateSpacingMixins } from '../lib/spacing';
 
 test('generates spacing mixins correctly', t => {
-    const typescale = generateTypescale(testBreakpoint);
     const media = generateMediaBreakpoints(testBreakpoint);
-    const [margin, padding] = generateSpacingMixins(typescale, media);
+    const [margin, padding] = generateSpacingMixins(testBreakpoint, media);
     t.is(
         margin('bottom', 1),
         dedent`

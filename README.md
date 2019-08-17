@@ -90,15 +90,21 @@ An object containing each [`Breakpoint`](src/lib/breakpoints.ts#L1). A `Breakpoi
 
 Note: It is required to have a Breakpoint with the key `default`. The `default` breakpoint does not need to have a `width` key.
 
-### initTypescale().size(scaleLevel)
+### initTypescale().size(scaleLevel, rhythmUnits?)
 
-Returns a `string` with proper CSS that sets the `font-size` to the passed modular scale level. Uses the passed breakpoint from `initTypescale`, and the returned string contains the proper media queries for each breakpoint.
+Returns a `string` with proper CSS that sets the `font-size` to the passed modular scale level. Uses the passed breakpoint from `initTypescale`, and the returned string contains the proper media queries for each breakpoint. Optionally, when `rhythmUnits` argument is provided, it also sets the `line-height` to the specified rhythm unit amount.
 
 #### scaleLevel
 
-Type: `number | string` - (TS: [`ScaleLevel`](src/lib/typescale.ts#L4))
+Type: `number`
 
-Modular scale level, from `0` to `7`. Altneratively, semantic aliases `p`, `h6` to `h1`, and `hero` can be used, too.
+The level of the modular scale, starting from `0`, which is the base.
+
+#### rhythmUnits
+
+Type: `number`
+
+This argument will add `line-height` to the returned CSS string. A single rhythm unit is equal to the line-height of the body text (modular scale level of 0).
 
 ### initTypescale().padding(direction, rhythmUnits)
 
@@ -114,7 +120,7 @@ Direction to apply the padding: `top`, `bottom`, `left`, or `right`.
 
 Type: `number`
 
-A single rhythm unit is equal to the line-height of the body text. (Body text refers to the modular scale level of 0).
+A single rhythm unit is equal to the line-height of the body text (modular scale level of 0).
 
 ### initTypescale().margin(direction, rhythmUnits)
 
@@ -170,7 +176,7 @@ export const { size, margin, media, padding } = typescale;
 import { size, padding } from './typescale.js';
 
 const componentStyle = `
-    ${size(0)}
+    ${size(0, 1)}
     ${padding('top', 3)}
 `;
 ```

@@ -13,7 +13,11 @@ const spacingFunction = (
 ) => {
     let spacingCss = '';
     Object.entries(breakpoint).forEach(([breakpointKey, breakpointValue]) => {
-        const rule = `${spacingType}-${direction}: ${breakpointValue.base * rhythmUnits}rem;\n`;
+        const rule = `${spacingType}-${direction}: ${(
+            breakpointValue.base *
+            breakpointValue.lineHeight *
+            rhythmUnits
+        ).toFixed(4)}rem;\n`;
         if (breakpointKey === 'default') {
             spacingCss += rule;
         } else {

@@ -10,36 +10,36 @@ test('generates spacing mixins correctly', t => {
     t.is(
         margin('bottom', 1),
         dedent`
-        margin-bottom: 1.15rem;
+        margin-bottom: 1.6100rem;
         @media (max-width: 90em) {
-            margin-bottom: 1.15rem;
+            margin-bottom: 1.6100rem;
         }
         @media (max-width: 67.5em) {
-            margin-bottom: 1.125rem;
+            margin-bottom: 1.5188rem;
         }
         @media (max-width: 45em) {
-            margin-bottom: 1.1rem;
+            margin-bottom: 1.4300rem;
         }
         @media (max-width: 30em) {
-            margin-bottom: 1rem;
+            margin-bottom: 1.3000rem;
         }\n
     `
     );
     t.is(
         padding('top', 4),
         dedent`
-        padding-top: 4.6rem;
+        padding-top: 6.4400rem;
         @media (max-width: 90em) {
-            padding-top: 4.6rem;
+            padding-top: 6.4400rem;
         }
         @media (max-width: 67.5em) {
-            padding-top: 4.5rem;
+            padding-top: 6.0750rem;
         }
         @media (max-width: 45em) {
-            padding-top: 4.4rem;
+            padding-top: 5.7200rem;
         }
         @media (max-width: 30em) {
-            padding-top: 4rem;
+            padding-top: 5.2000rem;
         }\n
     `
     );
